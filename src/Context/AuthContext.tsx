@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import React, { createContext, ReactNode, useEffect, useState } from "react";
 
 
 type user = {
@@ -14,7 +14,7 @@ type userAuth = {
   logout: () => Promise<void>;
 };
 
-const AuthContext = createContext<userAuth | null>(null);
+export const authContext = createContext<userAuth | null>(null);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<user | null>(null);
@@ -43,9 +43,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
  
+
   
 
-  return <AuthContext.Provider
+  return <authContext.Provider
       value={{
         isLoggedIn,
         user,
@@ -55,9 +56,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       }}
       >
       {children}
-    </AuthContext.Provider>
+    </authContext.Provider>
   
 };
-
-
-export const useAuth = useContext(AuthContext);
