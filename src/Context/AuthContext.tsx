@@ -1,4 +1,5 @@
 import React, { createContext, ReactNode, useEffect, useState } from "react";
+import { checkAuthStatus, loginUser } from "../helpers/api-communicator";
 
 
 type user = {
@@ -22,11 +23,25 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     // fetch if user cookies are available then skip login
+    async function checkStatus(){
+      const data =await checkAuthStatus();
+      if (data){
+        setUser({email:data.email , name:data.name  });
+        setIsLoggedIn(true);
+      }
+    }
+    checkStatus();
   }, []);
 
   const login = async (email: string, password: string) => {
     // call backend to login
+    const data = await loginUser(email, password);
+
     // if success then set user and isLoggedIn
+    if (data){
+      setUser({email:data.email , name:data.name  });
+      setIsLoggedIn(true);
+    }
     // else throw error
   };
 
