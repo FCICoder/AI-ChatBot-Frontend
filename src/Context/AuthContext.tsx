@@ -39,6 +39,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     // if success then set user and isLoggedIn
     if (data){
+      console.log(data);
+      
       setUser({email:data.email , name:data.name  });
       setIsLoggedIn(true);
     }
