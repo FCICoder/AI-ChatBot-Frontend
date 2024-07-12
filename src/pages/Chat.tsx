@@ -4,6 +4,8 @@ import { authContext } from "../Context/AuthContext"
 import { red } from "@mui/material/colors";
 import ChatItem from "../component/chat/ChatItem";
 import { IoMdSend } from "react-icons/io";
+import { senChatRequest } from "../helpers/api-communicator";
+import toast from "react-hot-toast";
 
 type Message = {
   role : "user"| "assistant";
@@ -14,13 +16,21 @@ const Chat = () => {
   let [chatMessages , setChatMessages] = useState<Message[]>([]);
   const inputRef =useRef<HTMLInputElement | null>(null);
   const handleSubmet = async()=>{
-    console.log(inputRef.current?.value);
-    const content = inputRef.current?.value as string;
-    if(inputRef && inputRef.current){
-      inputRef.current.value = '';
+    try{
+      console.log(inputRef.current?.value);
+      const content = inputRef.current?.value as string;
+      if(inputRef && inputRef.current){
+        inputRef.current.value = '';
+      }
+      const newMessage:Message = {role:'user', content: content};
+      setChatMessages((prev) => [...prev , newMessage] );
+      const chatData = await senChatRequest(content);
+      setChatMessages([...chatData.chats]);
+    }catch(err:any){
+      console.log(err.response.data.message);
+      toast.error(`${err.response.data.message} or buy additional Quota`);
     }
-    const newMessage:Message = {role:'user', content: content};
-    setChatMessages((prev) => [...prev , newMessage] );
+    
   }
   
   return (
