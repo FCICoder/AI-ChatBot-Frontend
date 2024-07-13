@@ -12,7 +12,7 @@ const Header = () => {
     <>  
     <AppBar sx={{bgcolor:"transparent", position:"static" , boxShadow:"none"}}>
      <Toolbar sx={{display:"flex"}}>
-        <Logo />
+        <Logo / >
         <div>
             {x?.isLoggedIn? <>
             <NavigationLink  bg='#00fffc' to='/chat' text='Go To Chat' textColor='black' />
