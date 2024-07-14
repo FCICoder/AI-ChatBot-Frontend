@@ -8,7 +8,7 @@ import { AuthProvider } from './Context/AuthContext.tsx'
 import axios from 'axios'
 import { Toaster } from 'react-hot-toast'
 
-axios.defaults.baseURL = 'https://ai-chat-bot-backend-five.vercel.app';
+axios.defaults.baseURL = 'https://ai-chat-bot-backend-mauve.vercel.app';
 axios.defaults.withCredentials = true;
 
 const theme = createTheme({ typography: { fontFamily: 'Roboto Slab , serif', allVariants: { color: "white" } } })
