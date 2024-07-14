@@ -1,9 +1,8 @@
-import { Box, useMediaQuery , useTheme } from "@mui/material"
-import React from "react"
+import { Box  } from "@mui/material"
 import TextAnimation from "../component/Typer/TextAnimation"
 const Home = () => {
-  const theme  = useTheme();
-  const isBeloMd= useMediaQuery(theme.breakpoints.down('md'))
+  // const theme  = useTheme();
+  // const isBeloMd= useMediaQuery(theme.breakpoints.down('md'))
   return (
     <Box width={'100%'} height={'100%'} >
       <Box sx={{display:"flex" , width:'100%', flexDirection:"column" , alignItems:'center' , mx:'auto', mt:3}}>

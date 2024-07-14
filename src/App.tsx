@@ -6,7 +6,7 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Chat from './pages/Chat'
 import Notfound from './pages/Notfound'
-import React, { useContext } from 'react'
+import  { useContext } from 'react'
 import { authContext } from './Context/AuthContext'
 import Footer from './component/Footer/Footer'
 function App() {
